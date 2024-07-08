@@ -16,9 +16,29 @@ namespace LexiEconWPF
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		public UserPages.MainPage MainPage = new UserPages.MainPage();
+		public UserPages.TasksPage TasksPage = new UserPages.TasksPage();
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void NavigationBarSel_SelectionChanged(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
+		{
+			var item = sender.SelectedItem;
+			Page? page = null;
+			if (item == NavHomePage)
+			{
+				page = MainPage;
+			}
+			else if (item == NavTaskPage)
+			{
+				page = TasksPage;
+			}
+			if (page != null)
+			{
+				MainFrame.Navigate(page);
+			}
 		}
 	}
 }

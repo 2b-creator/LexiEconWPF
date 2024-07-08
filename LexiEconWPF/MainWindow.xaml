@@ -10,15 +10,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1138">
     <Grid>
-        <ui:NavigationView IsPaneOpen="False" IsBackButtonVisible="Collapsed">
+        <ui:NavigationView x:Name="NavigationBarSel" IsPaneOpen="True" IsBackButtonVisible="Collapsed" SelectionChanged="NavigationBarSel_SelectionChanged">
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="主页">
+                <ui:NavigationViewItem x:Name="NavHomePage" Content="主页">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="任务">
+                <ui:NavigationViewItem x:Name="NavTaskPage" Content="任务">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.TaskView}"/>
                     </ui:NavigationViewItem.Icon>
@@ -32,7 +32,7 @@
 
             </ui:NavigationView.MenuItems>
 
-            <Frame>
+            <Frame x:Name="MainFrame" Source="UserPages/MainPage.xaml" NavigationUIVisibility="Hidden">
                 
             </Frame>
 

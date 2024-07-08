@@ -13,8 +13,4 @@
     <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.29" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UserPages\" />
-  </ItemGroup>
-
 </Project>
