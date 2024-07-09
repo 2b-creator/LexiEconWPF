@@ -24,17 +24,21 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="统计">
+                <ui:NavigationViewItem Content="学习">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Accept}"/>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.KeyboardOneHanded}"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
             </ui:NavigationView.MenuItems>
 
-            <Frame x:Name="MainFrame" Source="UserPages/MainPage.xaml" NavigationUIVisibility="Hidden">
-                
-            </Frame>
+            <ui:Frame x:Name="MainFrame" Source="UserPages/MainPage.xaml" NavigationUIVisibility="Hidden">
+                <ui:Frame.ContentTransitions>
+                    <ui:TransitionCollection>
+                        <ui:NavigationThemeTransition/>
+                    </ui:TransitionCollection>
+                </ui:Frame.ContentTransitions>
+            </ui:Frame>
 
         </ui:NavigationView>
     </Grid>

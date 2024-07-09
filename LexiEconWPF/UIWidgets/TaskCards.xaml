@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:LexiEconWPF.UIWidgets"
              xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
              mc:Ignorable="d">
-    <Grid Margin="30">
+    <Grid Margin="15">
 
         <StackPanel>
             <ItemsControl ItemsSource="{Binding TasksViewer}">

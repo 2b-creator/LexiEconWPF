@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using iNKORE.UI.WPF.Modern.Media.Animation;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -18,6 +19,7 @@ namespace LexiEconWPF
 	{
 		public UserPages.MainPage MainPage = new UserPages.MainPage();
 		public UserPages.TasksPage TasksPage = new UserPages.TasksPage();
+		private NavigationTransitionInfo? _transitionInfo = null;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -37,7 +39,7 @@ namespace LexiEconWPF
 			}
 			if (page != null)
 			{
-				MainFrame.Navigate(page);
+				MainFrame.Navigate(page, _transitionInfo = new EntranceNavigationTransitionInfo());
 			}
 		}
 	}
