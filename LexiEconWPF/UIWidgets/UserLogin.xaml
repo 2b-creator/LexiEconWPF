@@ -24,7 +24,7 @@
                     <TextBlock Text="密码" VerticalAlignment="Center" Width="40"/>
                 </Grid>  
                 <Grid Margin="10">
-                    <ui:AutoSuggestBox PlaceholderText="请输入你的密码" Width="200"/>
+                    <PasswordBox ui:ControlHelper.PlaceholderText="请输入你的密码" Width="200" />
                 </Grid>
             </StackPanel>
             <!--<Grid Margin="10" HorizontalAlignment="Center">

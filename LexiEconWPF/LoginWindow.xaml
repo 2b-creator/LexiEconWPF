@@ -13,7 +13,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <UIWidgets:UserLogin />
             <Grid Margin="10">
-                <Button Content="登录" HorizontalAlignment="Center"/>
+                <Button x:Name="LoginButton" Click="LoginButton_Click" Content="登录" HorizontalAlignment="Center"/>
             </Grid>
         </StackPanel>
     </Grid>
