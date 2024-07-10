@@ -24,7 +24,7 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Content="学习">
+                <ui:NavigationViewItem x:Name="NavStudyPage" Content="学习">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.KeyboardOneHanded}"/>
                     </ui:NavigationViewItem.Icon>

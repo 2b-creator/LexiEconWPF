@@ -11,6 +11,11 @@ namespace LexiEconWPF
 		public string PartOfSpeech { get; set; }
 		public string Meaning { get; set; }
 	}
+	public class WordsMeansLearning
+	{
+		public string PartOfSpeech { get; set; }
+		public string Meaning { get; set; }
+	}
 	public class TasksViewer
 	{
 		public string TaskName { get; set; }

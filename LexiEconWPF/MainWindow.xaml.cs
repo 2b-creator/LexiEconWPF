@@ -19,6 +19,7 @@ namespace LexiEconWPF
 	{
 		public UserPages.MainPage MainPage = new UserPages.MainPage();
 		public UserPages.TasksPage TasksPage = new UserPages.TasksPage();
+		public UserPages.StudyPage StudyPage = new UserPages.StudyPage();
 		private NavigationTransitionInfo? _transitionInfo = null;
 		public MainWindow()
 		{
@@ -37,7 +38,11 @@ namespace LexiEconWPF
 			{
 				page = TasksPage;
 			}
-			if (page != null)
+			else if (item == NavStudyPage)
+            {
+                page = StudyPage;
+            }
+            if (page != null)
 			{
 				MainFrame.Navigate(page, _transitionInfo = new EntranceNavigationTransitionInfo());
 			}

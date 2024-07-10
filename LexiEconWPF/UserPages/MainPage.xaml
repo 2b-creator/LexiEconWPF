@@ -11,7 +11,7 @@
       Title="MainPage">
 
     <Grid>
-        <StackPanel Margin="30">
+        <StackPanel Margin="20">
             <Grid Margin="10">
                 <TextBlock Text="今日单词" FontWeight="Bold" FontSize="24"/>
             </Grid>

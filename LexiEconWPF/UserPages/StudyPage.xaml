@@ -1,4 +1,4 @@
-﻿<Page x:Class="LexiEconWPF.UserPages.StudyPage"
+﻿<Page xmlns:UIWidgets="clr-namespace:LexiEconWPF.UIWidgets"  x:Class="LexiEconWPF.UserPages.StudyPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,6 +9,13 @@
       Title="StudyPage">
 
     <Grid>
-        
+        <StackPanel Margin="20">
+            <Grid Margin="10">
+                <TextBlock VerticalAlignment="Center" Text="学习" Grid.Column="0" FontWeight="Bold" FontSize="24"/>
+            </Grid>
+            <Grid Margin="10">
+                <UIWidgets:WordsCardLeaning />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
