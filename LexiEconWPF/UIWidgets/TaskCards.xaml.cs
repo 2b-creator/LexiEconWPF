@@ -1,7 +1,11 @@
-﻿using System;
+﻿using LexiEconWPF.AppFunctions;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,13 +28,29 @@ namespace LexiEconWPF.UIWidgets
 		public ObservableCollection<TasksViewer> TasksViewer { get; set; }
 		public TaskCards()
 		{
+
+			
+			InitializeComponent();
+		}
+
+		private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+		{
+			HttpClient client = new HttpClient();
+			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
+			var request = new HttpRequestMessage(HttpMethod.Get, $"{LexiEconSettings.LexiHost}{EndPointLexi.QueryTasks}");
+			request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			HttpResponseMessage responseMessage = await client.SendAsync(request);
+			string data = await responseMessage.Content.ReadAsStringAsync();
+			dynamic dataGet = JObject.Parse(data);
+			int taskCounts = dataGet.data.Count;
 			TasksViewer = new ObservableCollection<TasksViewer>()
 			{
-				new TasksViewer{TaskDescription=null,TaskName="Your Tasks"},
-				new TasksViewer{TaskDescription=null,TaskName="Your Tasks 2"},
 			};
-			InitializeComponent();
-			this.DataContext = this;
+            for (int i = 0; i < taskCounts; i++)
+            {
+				TasksViewer.Add(new LexiEconWPF.TasksViewer { TaskName = dataGet.data[i].task_name });
+            }
+            this.DataContext = this;
 		}
 	}
 }
