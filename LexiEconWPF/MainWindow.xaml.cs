@@ -9,19 +9,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LexiEconWPF.AppFunctions;
 
 namespace LexiEconWPF
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
+	
 	public partial class MainWindow : Window
 	{
+		public static bool isLogin = !String.IsNullOrEmpty(UserStatus.AccessToken);
 		public UserPages.MainPage MainPage = new UserPages.MainPage();
 		public UserPages.TasksPage TasksPage = new UserPages.TasksPage();
 		public UserPages.StudyPage StudyPage = new UserPages.StudyPage();
 		public UserPages.UnLoginPage UnLoginPage = new UserPages.UnLoginPage();
 		private NavigationTransitionInfo? _transitionInfo = null;
+		
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -37,13 +41,13 @@ namespace LexiEconWPF
 			}
 			else if (item == NavTaskPage)
 			{
-				page = UnLoginPage;
+				page = isLogin ? TasksPage : UnLoginPage;
 			}
 			else if (item == NavStudyPage)
-            {
-                page = UnLoginPage;
-            }
-            if (page != null)
+			{
+				page = isLogin ? StudyPage : UnLoginPage;
+			}
+			if (page != null)
 			{
 				MainFrame.Navigate(page, _transitionInfo = new EntranceNavigationTransitionInfo());
 			}

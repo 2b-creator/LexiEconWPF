@@ -11,7 +11,32 @@
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <UIWidgets:UserLogin />
+            <Grid>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid Margin="10">
+                        <TextBlock Text="登录" FontSize="20" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Grid Margin="10">
+                            <TextBlock Text="用户名" VerticalAlignment="Center" Width="40"/>
+                        </Grid>
+                        <Grid Margin="10">
+                            <ui:AutoSuggestBox x:Name="UsernameInput" PlaceholderText="请输入你的用户名" Width="200"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Grid Margin="10">
+                            <TextBlock Text="密码" VerticalAlignment="Center" Width="40"/>
+                        </Grid>
+                        <Grid Margin="10">
+                            <PasswordBox x:Name="PasswordInput" ui:ControlHelper.PlaceholderText="请输入你的密码" Width="200" />
+                        </Grid>
+                    </StackPanel>
+                    <!--<Grid Margin="10" HorizontalAlignment="Center">
+            <Button Content="登录"/>
+        </Grid>-->
+                </StackPanel>
+            </Grid>
             <Grid Margin="10">
                 <Button x:Name="LoginButton" Click="LoginButton_Click" Content="登录" HorizontalAlignment="Center"/>
             </Grid>

@@ -16,6 +16,8 @@ using System.Reflection.Metadata.Ecma335;
 using LexiEconWPF.AppFunctions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace LexiEconWPF
 {
@@ -26,16 +28,34 @@ namespace LexiEconWPF
 	{
 		public LoginWindow()
 		{
+
 			InitializeComponent();
 		}
 
 		private async void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
 			HttpClient client = new HttpClient();
-			var resp = await client.GetAsync($"{LexiEconSettings.LexiHost}/api/users/task/query");
-			string data = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
-            dynamic dataGet = JObject.Parse(data);
-			int statusCode = dataGet.data[0].task_id;
-        }
+			string currentPath = System.IO.Directory.GetCurrentDirectory();
+			string filename = "config.json";
+			string[] paths = new string[] { currentPath, filename };
+			string fullFilePath = Path.Combine(paths);
+			UserAttribute attribute = new UserAttribute();
+			attribute.username = UsernameInput.Text;
+			attribute.password = HashEncryptPassword.ApplyHash(PasswordInput.Password);
+			string postLoginStr = JsonConvert.SerializeObject(attribute);
+			var content = new StringContent(postLoginStr, Encoding.UTF8, "application/json");
+			HttpResponseMessage resp = await client.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.Login}", content: content);
+			string data = await resp.Content.ReadAsStringAsync();
+			dynamic serialData = JObject.Parse(data);
+			string token = serialData.access_token;
+			UserStatus.AccessToken = token;
+			string writeContent = $"{{\"access_token\": \"{token}\"}}";
+			MainWindow.isLogin = true;
+			using (StreamWriter sw = new StreamWriter(fullFilePath))
+			{
+				sw.Write(writeContent);
+			}
+			this.Close();
+		}
 	}
 }

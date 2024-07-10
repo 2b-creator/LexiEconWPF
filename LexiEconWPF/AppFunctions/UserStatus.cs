@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace LexiEconWPF.AppFunctions
 {
-    public class UserStatus
-    {
-        public static bool IsLogin = false;
-    }
+	public class UserStatus
+	{
+		public static string? AccessToken { get; set; }
+	}
+	public class UserAttribute
+	{
+		public string username { get; set; }
+		public string password { get; set; }
+	}
 }
