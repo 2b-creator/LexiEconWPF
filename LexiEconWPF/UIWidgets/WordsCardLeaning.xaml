@@ -8,32 +8,39 @@
              mc:Ignorable="d" >
     <!--d:DesignHeight="450" d:DesignWidth="800">-->
     <Grid>
-        <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
-        BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
-        CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
-            <StackPanel>
-                <TextBlock x:Name="Words" Text="Access" FontSize="44" FontWeight="SemiBold"/>
-                <Separator/>
-                <Grid>
-                    <StackPanel Margin="5">
-                        <ItemsControl ItemsSource="{Binding WordsMeansLearning}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Grid Margin="5">
-                                            <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
-                                        </Grid>
-                                        <Grid Margin="5">
-                                            <TextBlock Text="{Binding Meaning}"/>
-                                        </Grid>
+        <ItemsControl ItemsSource="{Binding Word}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
+    BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
+    CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
+                        <Grid>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontSize="44" FontWeight="SemiBold"/>
+                                <Separator/>
+                                <Grid>
+                                    <StackPanel Margin="5">
+                                        <ItemsControl ItemsSource="{Binding WordsLearning}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid Margin="5">
+                                                            <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
+                                                        </Grid>
+                                                        <Grid Margin="5">
+                                                            <TextBlock Text="{Binding Meaning}"/>
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-        </Border>
-        
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

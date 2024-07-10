@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern">
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid Margin="10">
                 <TextBlock Text="登录" FontSize="20" HorizontalAlignment="Center"/>
             </Grid>
@@ -27,9 +27,9 @@
                     <ui:AutoSuggestBox PlaceholderText="请输入你的密码" Width="200"/>
                 </Grid>
             </StackPanel>
-            <Grid Margin="10" HorizontalAlignment="Center">
+            <!--<Grid Margin="10" HorizontalAlignment="Center">
                 <Button Content="登录"/>
-            </Grid>
+            </Grid>-->
         </StackPanel>
     </Grid>
 </UserControl>

@@ -21,13 +21,20 @@ namespace LexiEconWPF.UIWidgets
 	/// </summary>
 	public partial class WordsCard : UserControl
 	{
-		public ObservableCollection<WordsMeans> Meanings { get; set; }
+		public ObservableCollection<Word> Word { get; set; }
 		public WordsCard()
 		{
-			Meanings = new ObservableCollection<WordsMeans>
+			Word = new ObservableCollection<Word>
 			{
-				new WordsMeans{PartOfSpeech="vt.", Meaning="进入"},
-				new WordsMeans{PartOfSpeech="n.", Meaning="使用...的权利"},
+				new Word
+				{
+					Name = "Access",
+					WordsMeans = new List<WordsMeans>
+					{
+						new WordsMeans { PartOfSpeech = "n.", Meaning = "The means or opportunity to approach or enter a place." },
+						new WordsMeans { PartOfSpeech = "v.", Meaning = "To approach or enter (a place)." }
+					}
+				},
 			};
 			InitializeComponent();
 			this.DataContext = this;

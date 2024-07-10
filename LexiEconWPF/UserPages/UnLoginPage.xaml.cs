@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace LexiEconWPF.UserPages
 {
     /// <summary>
-    /// MainPage.xaml 的交互逻辑
+    /// UnLoginPage.xaml 的交互逻辑
     /// </summary>
-    public partial class MainPage : Page
+    public partial class UnLoginPage : Page
     {
-        public MainPage()
+        public UnLoginPage()
         {
             InitializeComponent();
         }
-	}
+    }
 }
