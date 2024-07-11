@@ -29,7 +29,7 @@ namespace LexiEconWPF.UIWidgets
 				new Word
 				{
 					Name = "Access",
-					WordsMeans = new List<WordsMeans>
+					WordsMeans = new ObservableCollection<WordsMeans>
 					{
 						new WordsMeans { PartOfSpeech = "n.", Meaning = "The means or opportunity to approach or enter a place." },
 						new WordsMeans { PartOfSpeech = "v.", Meaning = "To approach or enter (a place)." }

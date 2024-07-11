@@ -16,7 +16,7 @@
                         <Grid>
                             <StackPanel>
                                 <TextBlock Text="{Binding Name}" FontSize="44" FontWeight="SemiBold"/>
-                                <Separator/>
+                                <Separator Margin="5"/>
                                 <Grid>
                                     <StackPanel Margin="5">
                                         <ItemsControl ItemsSource="{Binding WordsMeans}">
@@ -34,6 +34,12 @@
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
                                     </StackPanel>
+                                </Grid>
+                                <Grid Margin="5">
+                                    <TextBlock Text="例句" FontWeight="DemiBold"/>
+                                </Grid>
+                                <Grid Margin="5">
+                                    <TextBlock Text="例句" FontWeight="DemiBold"/>
                                 </Grid>
                             </StackPanel>
                         </Grid>

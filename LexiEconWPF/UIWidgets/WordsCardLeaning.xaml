@@ -8,39 +8,88 @@
              mc:Ignorable="d" Loaded="UserControl_Loaded">
     <!--d:DesignHeight="450" d:DesignWidth="800">-->
     <Grid>
-        <ItemsControl ItemsSource="{Binding Word}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
-    BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
-    CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
-                        <Grid>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}" FontSize="44" FontWeight="SemiBold"/>
-                                <Separator/>
-                                <Grid>
-                                    <StackPanel Margin="5">
-                                        <ItemsControl ItemsSource="{Binding WordsLearning}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Grid Margin="5">
-                                                            <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
-                                                        </Grid>
-                                                        <Grid Margin="5">
-                                                            <TextBlock Text="{Binding Meaning}"/>
-                                                        </Grid>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <StackPanel>
+            <ScrollViewer Height="600">
+                <ItemsControl ItemsSource="{Binding WordsLearning}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="10">
+                                <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
+                    BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
+                    CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
+                                    <Grid>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}" FontSize="44" FontWeight="SemiBold"/>
+                                            <Grid Margin="5">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock VerticalAlignment="Center" Text="英:"/>
+                                                    <TextBlock VerticalAlignment="Center" Text="{Binding UkPhone}"/>
+                                                    <Grid Margin="5">
+                                                        <Button Tag="{Binding Name, Mode=OneWay}" x:Name="PlaySoundBtnUK" Click="PlaySoundBtnUK_Click" Command="{Binding PlaySoundCommand}" CommandParameter="{Binding}">
+                                                            <Image Source="/UIWidgets/Speaker.png" Width="10" Height="10"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Margin="5">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock VerticalAlignment="Center" Text="美:"/>
+                                                    <TextBlock VerticalAlignment="Center" Text="{Binding UsPhone}"/>
+                                                    <Grid Margin="5">
+                                                        <Button Tag="{Binding Name, Mode=OneWay}" Click="PlaySoundBtnUS_Click" x:Name="PlaySoundBtnUS" Command="{Binding PlaySoundCommand}" CommandParameter="{Binding}">
+                                                            <Image Source="/UIWidgets/Speaker.png" Width="10" Height="10"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Separator Margin="5"/>
+                                            <Grid>
+                                                <StackPanel Margin="5">
+                                                    <ItemsControl ItemsSource="{Binding WordsMeans}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <Grid Margin="5">
+                                                                        <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
+                                                                    </Grid>
+                                                                    <Grid Margin="5">
+                                                                        <TextBlock Text="{Binding Meaning}"/>
+                                                                    </Grid>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Margin="5">
+                                                <TextBlock Text="例句" FontWeight="DemiBold"/>
+                                            </Grid>
+                                            <Grid Margin="5">
+                                                <ItemsControl ItemsSource="{Binding ExampleSentences}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel>
+                                                                <Grid Margin="5">
+                                                                    <TextBlock Text="{Binding sContent}" TextWrapping="WrapWithOverflow"/>
+                                                                </Grid>
+                                                                <Grid Margin="5">
+                                                                    <TextBlock Text="{Binding sCn}"/>
+                                                                </Grid>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            </StackPanel>
+
     </Grid>
 </UserControl>
