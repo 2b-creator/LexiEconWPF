@@ -41,6 +41,7 @@ namespace LexiEconWPF.UIWidgets
 			HttpResponseMessage responseMessage = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.TaskGetWords}");
 			string data = await responseMessage.Content.ReadAsStringAsync();
 			dynamic dataGet = JObject.Parse(data);
+
 			int words = dataGet.data.Count;
 
 			WordsLearning = new ObservableCollection<Word>();
@@ -51,34 +52,50 @@ namespace LexiEconWPF.UIWidgets
 				List<ExampleSentences> sentences = GetSentenceDeserialStr(dataGet, i);
 				int wordsMeansCount = translations.Count;
 				int sentenceCount = sentences.Count;
-				string ukPhone = dataGet.data[i].uk_phone;
-				string usPhone = dataGet.data[i].us_phone;
-				WordsMean = new ObservableCollection<WordsMeans>();
-				ExampleSentences = new ObservableCollection<ExampleSentences>();
-				for (int j = 0; j < wordsMeansCount; j++)
+				int taskId = dataGet.data[i].task_id;
+				HttpResponseMessage getTaskFinished = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.CheckTask}?task_id={taskId}");
+				string taskInfo = await getTaskFinished.Content.ReadAsStringAsync();
+				dynamic taskInfoGet = JObject.Parse(taskInfo);
+
+				try
 				{
-					WordsMean.Add(new WordsMeans
+					if (taskInfoGet.data[0].status == "已完成") { }
+					else
 					{
-						Meaning = translations[j].tranCn,
-						PartOfSpeech = translations[j].pos
-					});
+						string ukPhone = dataGet.data[i].uk_phone;
+						string usPhone = dataGet.data[i].us_phone;
+						WordsMean = new ObservableCollection<WordsMeans>();
+						ExampleSentences = new ObservableCollection<ExampleSentences>();
+						for (int j = 0; j < wordsMeansCount; j++)
+						{
+							WordsMean.Add(new WordsMeans
+							{
+								Meaning = translations[j].tranCn,
+								PartOfSpeech = translations[j].pos
+							});
+						}
+						for (int j = 0; j < sentenceCount; j++)
+						{
+							ExampleSentences.Add(new LexiEconWPF.ExampleSentences
+							{
+								sContent = sentences[j].sContent,
+								sCn = sentences[j].sCn,
+							});
+						}
+						WordsLearning.Add(new Word
+						{
+							UkPhone = $"/{ukPhone}/",
+							UsPhone = $"/{usPhone}/",
+							Name = dataGet.data[i].word_name,
+							WordsMeans = WordsMean,
+							ExampleSentences = ExampleSentences,
+						});
+					}
 				}
-				for (int j = 0; j < sentenceCount; j++)
+				catch (ArgumentOutOfRangeException )
 				{
-					ExampleSentences.Add(new LexiEconWPF.ExampleSentences
-					{
-						sContent = sentences[j].sContent,
-						sCn = sentences[j].sCn,
-					});
+
 				}
-				WordsLearning.Add(new Word
-				{
-					UkPhone = $"/{ukPhone}/",
-					UsPhone = $"/{usPhone}/",
-					Name = dataGet.data[i].word_name,
-					WordsMeans = WordsMean,
-					ExampleSentences = ExampleSentences,
-				});
 			}
 			this.DataContext = this;
 		}
@@ -114,5 +131,6 @@ namespace LexiEconWPF.UIWidgets
 			var myCommand = new PlaySoundCommand(wordsCardLeaning, ((Button)sender).Tag.ToString(), 0);
 			myCommand.Execute(null);
 		}
+
 	}
 }

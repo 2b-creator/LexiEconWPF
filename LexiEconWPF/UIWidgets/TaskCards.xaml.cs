@@ -29,7 +29,7 @@ namespace LexiEconWPF.UIWidgets
 		public TaskCards()
 		{
 
-			
+
 			InitializeComponent();
 		}
 
@@ -43,14 +43,15 @@ namespace LexiEconWPF.UIWidgets
 			string data = await responseMessage.Content.ReadAsStringAsync();
 			dynamic dataGet = JObject.Parse(data);
 			int taskCounts = dataGet.data.Count;
-			TasksViewer = new ObservableCollection<TasksViewer>()
+			TasksViewer = new ObservableCollection<TasksViewer>() { };
+			for (int i = 0; i < taskCounts; i++)
 			{
-			};
-            for (int i = 0; i < taskCounts; i++)
-            {
-				TasksViewer.Add(new LexiEconWPF.TasksViewer { TaskName = dataGet.data[i].task_name });
+                if (dataGet.data[i].status != "已完成")
+                {
+					TasksViewer.Add(new LexiEconWPF.TasksViewer { TaskName = dataGet.data[i].task_name });
+				}
             }
-            this.DataContext = this;
+			this.DataContext = this;
 		}
 	}
 }
