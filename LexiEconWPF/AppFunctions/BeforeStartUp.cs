@@ -7,6 +7,8 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Windows.Markup;
+using System.Collections.ObjectModel;
+using System.Net.Http;
 
 namespace LexiEconWPF.AppFunctions
 {
@@ -22,7 +24,7 @@ namespace LexiEconWPF.AppFunctions
 			{
 				try
 				{
-					using (StreamReader reader = new StreamReader(fullFilePath,Encoding.UTF8))
+					using (StreamReader reader = new StreamReader(fullFilePath, Encoding.UTF8))
 					{
 						string content = reader.ReadToEnd();
 						dynamic serialContent = JObject.Parse(content);
@@ -34,7 +36,7 @@ namespace LexiEconWPF.AppFunctions
 
 					throw e;
 				}
-				
+
 			}
 			else
 			{
@@ -43,8 +45,26 @@ namespace LexiEconWPF.AppFunctions
 				{
 					writer.Write("{}");
 				}
-				
+
 			}
+		}
+		public async void ReadCate()
+		{
+			DataExchageStatic.CateWithId = new ObservableCollection<CateWithId> { };
+			HttpClient httpClient = new HttpClient();
+			HttpResponseMessage message = await httpClient.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.GetCate}");
+			string data = await message.Content.ReadAsStringAsync();
+			dynamic dataGet = JObject.Parse(data);
+			int cateCounts = dataGet.data.Count;
+			for (int i = 0; i < cateCounts; i++)
+			{
+				DataExchageStatic.CateWithId.Add(new CateWithId
+				{
+					Id = dataGet.data[i].cate_id,
+					Name = dataGet.data[i].cated_name,
+				});
+			}
+
 		}
 	}
 }

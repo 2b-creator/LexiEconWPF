@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LexiEconWPF
 {
-    public class WordsMeans
-    {
+	public class WordsMeans
+	{
 		public string PartOfSpeech { get; set; }
 		public string Meaning { get; set; }
-		
+
 	}
 	public class TasksViewer
 	{
@@ -34,7 +34,7 @@ namespace LexiEconWPF
 		public string UsPhone { get; set; }
 		public string UkPhone { get; set; }
 		public string ExampleSentence { get; set; }
-		public ObservableCollection<WordsMeans> WordsMeans { get; set;}
+		public ObservableCollection<WordsMeans> WordsMeans { get; set; }
 	}
 	public class Translation
 	{
@@ -48,5 +48,10 @@ namespace LexiEconWPF
 	{
 		public string sContent { get; set; }
 		public string sCn { get; set; }
+	}
+	public class CateWithId
+	{
+		public string Id { get; set; }
+		public string Name { get; set; }
 	}
 }

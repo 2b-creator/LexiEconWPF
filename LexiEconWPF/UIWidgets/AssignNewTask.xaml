@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="LexiEconWPF.UIWidgets.AssignNewTask"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LexiEconWPF.UIWidgets"
+             xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+             mc:Ignorable="d" >
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="SendToClass" Text="分发班级:" Margin="5" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1" Margin="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="任务名称:" Margin="5" VerticalAlignment="Center"/>
+                <ui:AutoSuggestBox Grid.Column="1" Margin="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="单词分类:" Margin="5" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1" Margin="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="起始 ID:" Margin="5" VerticalAlignment="Center"/>
+                <ui:AutoSuggestBox Grid.Column="1" Margin="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="终止 ID:" Margin="5" VerticalAlignment="Center"/>
+                <ui:AutoSuggestBox Grid.Column="1" Margin="5"/>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
