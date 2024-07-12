@@ -22,7 +22,7 @@ CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" FontSize="14" Text="{Binding TaskName}" Grid.Column="0"/>
-                                    <Button Style="{ui:StaticResource AccentButtonStyle}" Content="完成任务" Grid.Column="1"/>
+                                    <Button x:Name="FinishTasks" Click="FinishTasks_Click" Tag="{Binding TaskId}" Style="{ui:StaticResource AccentButtonStyle}" Content="完成任务" Grid.Column="1"/>
                                 </Grid>
                             </Border>
                         </Grid>

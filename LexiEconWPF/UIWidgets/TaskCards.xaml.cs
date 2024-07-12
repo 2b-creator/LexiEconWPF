@@ -46,12 +46,22 @@ namespace LexiEconWPF.UIWidgets
 			TasksViewer = new ObservableCollection<TasksViewer>() { };
 			for (int i = 0; i < taskCounts; i++)
 			{
-                if (dataGet.data[i].status != "已完成")
-                {
-					TasksViewer.Add(new LexiEconWPF.TasksViewer { TaskName = dataGet.data[i].task_name });
+				if (dataGet.data[i].status != "已完成")
+				{
+					TasksViewer.Add(new LexiEconWPF.TasksViewer
+					{
+						TaskId = dataGet.data[i].task_id,
+						TaskName = dataGet.data[i].task_name
+					});
 				}
-            }
+			}
 			this.DataContext = this;
+		}
+
+		private void FinishTasks_Click(object sender, RoutedEventArgs e)
+		{
+			ReciteWordsExecuter executer = new ReciteWordsExecuter(Convert.ToInt32(((Button)sender).Tag));
+			
 		}
 	}
 }
