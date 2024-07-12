@@ -16,6 +16,8 @@ namespace LexiEconWPF.AppFunctions
 		public void Execute()
 		{
 			DataExchageStatic.TaskId = _taskId;
+			ReciteWordsWindow reciteWordsWindow = new ReciteWordsWindow();
+			reciteWordsWindow.ShowDialog();
 		}
 	}
 }

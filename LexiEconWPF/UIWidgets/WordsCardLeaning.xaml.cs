@@ -84,6 +84,7 @@ namespace LexiEconWPF.UIWidgets
 						}
 						WordsLearning.Add(new Word
 						{
+							WordId = dataGet.data[i].word_id,
 							UkPhone = $"/{ukPhone}/",
 							UsPhone = $"/{usPhone}/",
 							Name = dataGet.data[i].word_name,

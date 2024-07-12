@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace LexiEconWPF
 {
 	/// <summary>
-	/// ReciteWordsPage.xaml 的交互逻辑
+	/// ReciteWordsWindow.xaml 的交互逻辑
 	/// </summary>
-	public partial class ReciteWordsPage : Window
+	public partial class ReciteWordsWindow : Window
 	{
-		public ReciteWordsPage()
+		public ReciteWordsWindow()
 		{
 			InitializeComponent();
 		}

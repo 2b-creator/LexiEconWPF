@@ -28,8 +28,6 @@ namespace LexiEconWPF.UIWidgets
 		public ObservableCollection<TasksViewer> TasksViewer { get; set; }
 		public TaskCards()
 		{
-
-
 			InitializeComponent();
 		}
 
@@ -61,7 +59,7 @@ namespace LexiEconWPF.UIWidgets
 		private void FinishTasks_Click(object sender, RoutedEventArgs e)
 		{
 			ReciteWordsExecuter executer = new ReciteWordsExecuter(Convert.ToInt32(((Button)sender).Tag));
-			
+			executer.Execute();
 		}
 	}
 }

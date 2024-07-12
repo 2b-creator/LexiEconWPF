@@ -7,33 +7,50 @@
              xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
              mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
-        <ItemsControl>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
-                        BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
-                        CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
-                        <Grid>
-                            <StackPanel Margin="5">
-                                <ItemsControl ItemsSource="{Binding WordsMeans}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Grid Margin="5">
-                                                    <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
-                                                </Grid>
-                                                <Grid Margin="5">
-                                                    <TextBlock Text="{Binding Meaning}"/>
-                                                </Grid>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <StackPanel>
+            <ScrollViewer Height="350">
+                <ItemsControl x:Name="StudyItem" ItemsSource="{Binding WordsLearning}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="10">
+                                <Border Background="{DynamicResource {x:Static ui:ThemeKeys.LayerFillColorDefaultBrushKey}}" 
+                BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
+                CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14">
+                                    <Grid>
+                                        <StackPanel>
+                                            
+                                            <ui:AutoSuggestBox x:Name="EnterRecite" Tag="{Binding Name}" Foreground="Black"/>
+                                            <TextBlock x:Name="CorrectAnswer" Visibility="Collapsed" Text="{Binding Name}" Tag="{Binding WordId}" FontSize="44" FontWeight="SemiBold"/>
+                                            <Separator Margin="5"/>
+                                            <Grid>
+                                                <StackPanel Margin="5">
+                                                    <ItemsControl ItemsSource="{Binding WordsMeans}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <Grid Margin="5">
+                                                                        <TextBlock Text="{Binding PartOfSpeech}" Width="20"/>
+                                                                    </Grid>
+                                                                    <Grid Margin="5">
+                                                                        <TextBlock Text="{Binding Meaning}"/>
+                                                                    </Grid>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <Button Click="SubmitButton_Click" x:Name="SubmitButton" Margin="10" HorizontalAlignment="Center" Style="{ui:StaticResource AccentButtonStyle}" Content="校对" Grid.Column="1"/>
+        </StackPanel>
+
     </Grid>
 </UserControl>

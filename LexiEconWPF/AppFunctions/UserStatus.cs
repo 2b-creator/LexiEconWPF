@@ -15,4 +15,10 @@ namespace LexiEconWPF.AppFunctions
 		public string username { get; set; }
 		public string password { get; set; }
 	}
+	public class UserReciteStatus
+	{
+		public int word_id { get; set; }
+		public string review_category { get; set; } = "spell";
+		public string situation { get; set; }
+	}
 }

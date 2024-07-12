@@ -21,6 +21,7 @@ namespace LexiEconWPF
 	}
 	public class Word
 	{
+		public int WordId { get; set; }
 		public string Name { get; set; }
 		public string UsPhone { get; set; }
 		public string UkPhone { get; set; }
