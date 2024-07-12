@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
              xmlns:local="clr-namespace:LexiEconWPF.UIWidgets"
-             mc:Ignorable="d" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" Loaded="UserControl_Loaded" GotFocus="UserControl_GotFocus">
     <!--d:DesignHeight="450" d:DesignWidth="800">-->
     <Grid>
         <StackPanel>

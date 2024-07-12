@@ -24,6 +24,7 @@ namespace LexiEconWPF
 		public UserPages.TasksPage TasksPage = new UserPages.TasksPage();
 		public UserPages.StudyPage StudyPage = new UserPages.StudyPage();
 		public UserPages.UnLoginPage UnLoginPage = new UserPages.UnLoginPage();
+		public UserPages.ClassPage ClassPage = new UserPages.ClassPage();
 		private NavigationTransitionInfo? _transitionInfo = null;
 		
 		public MainWindow()
@@ -46,6 +47,10 @@ namespace LexiEconWPF
 			else if (item == NavStudyPage)
 			{
 				page = isLogin ? StudyPage : UnLoginPage;
+			}
+			else if (item == NavClassPage)
+			{
+				page = isLogin ? ClassPage : UnLoginPage;
 			}
 			if (page != null)
 			{

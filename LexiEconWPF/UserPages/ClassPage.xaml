@@ -1,0 +1,37 @@
+﻿<Page xmlns:UIWidgets="clr-namespace:LexiEconWPF.UIWidgets"  x:Class="LexiEconWPF.UserPages.ClassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LexiEconWPF.UserPages"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClassPage">
+
+    <Grid>
+        <StackPanel Margin="10">
+            <Grid Margin="30,30,30,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="班级" Grid.Column="0" FontWeight="Bold" FontSize="24"/>
+                <ui:CommandBar Grid.Column="1">
+                    <ui:CommandBar.PrimaryCommands>
+                        <ui:AppBarButton x:Name="JoinClass" Click="JoinClass_Click" Label="加入班级">
+                            <ui:AppBarButton.Icon>
+                                <ui:SymbolIcon Symbol="Add"/>
+                                <!--<ui:FontIcon Glyph="{x:Static ui:SegoeFluentIcons.Add}"/>-->
+                            </ui:AppBarButton.Icon>
+                        </ui:AppBarButton>
+                    </ui:CommandBar.PrimaryCommands>
+                </ui:CommandBar>
+            </Grid>
+            <Grid Margin="30,10,30,0">
+                <UIWidgets:ClassCardWidget />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

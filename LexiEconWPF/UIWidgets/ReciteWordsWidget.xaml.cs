@@ -31,6 +31,9 @@ namespace LexiEconWPF.UIWidgets
 		public ObservableCollection<WordsMeans> WordsMean { get; set; }
 		public ObservableCollection<ExampleSentences> ExampleSentences { get; set; }
 		public static string PreviousValue { get; set; }
+		public static int words { get; set; }
+		public static int taskId { get; set; }
+		public static int correctNums { get; set; }
 		public ReciteWordsWidget()
 		{
 			InitializeComponent();
@@ -40,11 +43,11 @@ namespace LexiEconWPF.UIWidgets
 		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
-			HttpResponseMessage responseMessage = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.TaskGetWords}");
+			HttpResponseMessage responseMessage = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.TaskGetWords}?task_id={DataExchageStatic.TaskId}");
 			string data = await responseMessage.Content.ReadAsStringAsync();
 			dynamic dataGet = JObject.Parse(data);
 
-			int words = dataGet.data.Count;
+			words = dataGet.data.Count;
 
 			WordsLearning = new ObservableCollection<Word>();
 
@@ -54,7 +57,7 @@ namespace LexiEconWPF.UIWidgets
 				List<ExampleSentences> sentences = GetSentenceDeserialStr(dataGet, i);
 				int wordsMeansCount = translations.Count;
 				int sentenceCount = sentences.Count;
-				int taskId = dataGet.data[i].task_id;
+				taskId = dataGet.data[i].task_id;
 				HttpResponseMessage getTaskFinished = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.CheckTask}?task_id={taskId}");
 				string taskInfo = await getTaskFinished.Content.ReadAsStringAsync();
 				dynamic taskInfoGet = JObject.Parse(taskInfo);
@@ -124,24 +127,26 @@ namespace LexiEconWPF.UIWidgets
 		{
 			var items = StudyItem.Items;
 			int wordsCheckCounts = StudyItem.Items.Count;
+			correctNums = 0;
 			for (int i = 0; i < wordsCheckCounts; i++)
 			{
 				ContentPresenter cp = StudyItem.ItemContainerGenerator.ContainerFromItem(items[i]) as ContentPresenter;
 				AutoSuggestBox asb = FindVisualChild<AutoSuggestBox>(cp);
 				StackPanel stackPanel = FindVisualChild<StackPanel>(cp);
-
 				foreach (var item in items)
 				{
+					
 					if (stackPanel != null)
 					{
 						var nameTextBlock = stackPanel.Children.OfType<TextBlock>().FirstOrDefault();
 
 						if (nameTextBlock != null)
 						{
-							nameTextBlock.Visibility = Visibility.Visible;
+							
 							await Handler(asb, nameTextBlock);
 						}
 					}
+					
 				}
 			}
 		}
@@ -150,7 +155,7 @@ namespace LexiEconWPF.UIWidgets
 		{
 			HttpClient httpClient = new HttpClient();
 			httpClient.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
-			int correctNums = 0;
+			
 			if (asb.Text == asb.Tag.ToString())
 			{
 				if (PreviousValue == asb.Text)
@@ -170,6 +175,13 @@ namespace LexiEconWPF.UIWidgets
 					string postStatusStr = JsonConvert.SerializeObject(status);
 					var content = new StringContent(postStatusStr, Encoding.UTF8, "application/json");
 					HttpResponseMessage resp = await httpClient.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.SubmitWordsStatus}", content: content);
+					if (correctNums == words && nameTextBlock.Visibility == Visibility.Collapsed)
+					{
+						string postStr = $"{{\"task_id\": {taskId}}}";
+						var postStrContent = new StringContent(postStr, Encoding.UTF8, "application/json");
+						HttpResponseMessage message = await httpClient.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.FinishTask}", content: postStrContent);
+					}
+					nameTextBlock.Visibility = Visibility.Visible;
 				}
 			}
 			else if (asb.Text != asb.Tag.ToString())
@@ -180,6 +192,7 @@ namespace LexiEconWPF.UIWidgets
 				}
 				else
 				{
+					correctNums = 0;
 					PreviousValue = asb.Text;
 					asb.Foreground = new SolidColorBrush(Colors.Red);
 					int wordId = Convert.ToInt32(nameTextBlock.Tag.ToString());
@@ -190,6 +203,7 @@ namespace LexiEconWPF.UIWidgets
 					string postStatusStr = JsonConvert.SerializeObject(status);
 					var content = new StringContent(postStatusStr, Encoding.UTF8, "application/json");
 					HttpResponseMessage resp = await httpClient.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.SubmitWordsStatus}", content: content);
+					nameTextBlock.Visibility = Visibility.Visible;
 				}
 
 			}

@@ -30,6 +30,12 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
+                <ui:NavigationViewItem x:Name="NavClassPage" Content="班级">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.People}"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+
             </ui:NavigationView.MenuItems>
 
             <ui:Frame x:Name="MainFrame" Source="UserPages/MainPage.xaml" NavigationUIVisibility="Hidden">

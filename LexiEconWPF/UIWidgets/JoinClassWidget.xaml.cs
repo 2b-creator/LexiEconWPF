@@ -1,8 +1,6 @@
-﻿using LexiEconWPF.AppFunctions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LexiEconWPF.UserPages
+namespace LexiEconWPF.UIWidgets
 {
 	/// <summary>
-	/// TasksPage.xaml 的交互逻辑
+	/// JoinClassWidget.xaml 的交互逻辑
 	/// </summary>
-	public partial class TasksPage : Page
+	public partial class JoinClassWidget : UserControl
 	{
-		public TasksPage()
+		public JoinClassWidget()
 		{
 			InitializeComponent();
 		}
-
-		private async void Page_Loaded(object sender, RoutedEventArgs e)
-		{
-			
-		}
-
-		private void NewTaskHandler_Click(object sender, RoutedEventArgs e)
-		{
-
-        }
-    }
+	}
 }

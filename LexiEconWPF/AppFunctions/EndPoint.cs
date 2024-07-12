@@ -22,5 +22,8 @@ namespace LexiEconWPF.AppFunctions
 		public static string TaskGetWords = "/api/users/task/get_words";
 		public static string CheckTask = "/api/users/task/check";
 		public static string SubmitWordsStatus = "/api/users/words/submit";
+		public static string FinishTask = "/api/users/task/finish";
+		public static string GetClassInfo = "/api/users/class/info";
+		public static string JoinClass = "/api/users/join";
 	}
 }

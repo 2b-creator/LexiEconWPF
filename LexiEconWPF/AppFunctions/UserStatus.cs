@@ -21,4 +21,13 @@ namespace LexiEconWPF.AppFunctions
 		public string review_category { get; set; } = "spell";
 		public string situation { get; set; }
 	}
+	public class ClassViewer
+	{
+		public int ClassId { get; set; }
+		public string ClassName { get; set; }
+	}
+	public class JoinClassViewer
+	{
+		public string invite_code { get; set; }
+	}
 }

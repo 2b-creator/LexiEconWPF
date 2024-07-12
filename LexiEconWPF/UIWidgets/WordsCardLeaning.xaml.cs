@@ -36,6 +36,11 @@ namespace LexiEconWPF.UIWidgets
 
 		private async void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
+			await SetState();
+		}
+
+		private async Task SetState()
+		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
 			HttpResponseMessage responseMessage = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.TaskGetWords}");
@@ -93,7 +98,7 @@ namespace LexiEconWPF.UIWidgets
 						});
 					}
 				}
-				catch (ArgumentOutOfRangeException )
+				catch (ArgumentOutOfRangeException)
 				{
 
 				}
@@ -133,5 +138,9 @@ namespace LexiEconWPF.UIWidgets
 			myCommand.Execute(null);
 		}
 
-	}
+		private async void UserControl_GotFocus(object sender, RoutedEventArgs e)
+		{
+			await SetState();
+		}
+    }
 }
