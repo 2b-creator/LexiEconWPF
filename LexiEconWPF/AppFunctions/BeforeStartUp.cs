@@ -9,6 +9,9 @@ using Newtonsoft.Json.Linq;
 using System.Windows.Markup;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Windows;
+using System.Xml.Linq;
+using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace LexiEconWPF.AppFunctions
 {
@@ -33,7 +36,8 @@ namespace LexiEconWPF.AppFunctions
 				}
 				catch (Exception e)
 				{
-
+					MessageBoxEx.Show(e.ToString(), "错误!", MessageBoxButton.OK, MessageBoxImage.Error);
+					LogHelper.Fatal(e.ToString(), e);
 					throw e;
 				}
 
@@ -67,6 +71,18 @@ namespace LexiEconWPF.AppFunctions
 				DataExchageStatic.CateWithId.Add(ids);
 			}
 
+		}
+		public void CreateLogFile()
+		{
+			string currentPath = System.IO.Directory.GetCurrentDirectory();
+			string filename = "log.txt";
+			string[] paths = new string[] { currentPath, filename };
+			string fullFilePath = Path.Combine(paths);
+			if (!File.Exists(fullFilePath))
+			{
+				File.Create(fullFilePath).Close();
+			}
+			LogHelper.SetConfig(fullFilePath);
 		}
 	}
 }

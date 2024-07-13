@@ -15,6 +15,7 @@ namespace LexiEconWPF
 			base.OnStartup(e);
 			BeforeStartUp startUp = new BeforeStartUp();
 			startUp.ReadJsonAccess();
+			//startUp.CreateLogFile();
 		}
 	}
 

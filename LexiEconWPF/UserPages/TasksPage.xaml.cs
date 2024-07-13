@@ -51,7 +51,8 @@ namespace LexiEconWPF.UserPages
 			{
 				string exName = ex.ToString();
 				MessageBoxEx.Show(exName, "错误!", MessageBoxButton.OK, MessageBoxImage.Error);
-				throw ex;
+				LogHelper.Error("error", ex);
+				//throw ex;
 			}
 		}
 

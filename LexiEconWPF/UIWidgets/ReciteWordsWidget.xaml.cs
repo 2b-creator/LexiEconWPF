@@ -19,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Windows.Media.Protection.PlayReady;
+using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace LexiEconWPF.UIWidgets
 {
@@ -98,9 +99,12 @@ namespace LexiEconWPF.UIWidgets
 						});
 					}
 				}
-				catch (ArgumentOutOfRangeException)
+				catch (Exception ex)
 				{
-
+					string exName = ex.ToString();
+					MessageBoxEx.Show(exName, "致命的错误!", MessageBoxButton.OK, MessageBoxImage.Error);
+					LogHelper.Fatal("error", ex);
+					throw ex;
 				}
 			}
 			this.DataContext = this;
