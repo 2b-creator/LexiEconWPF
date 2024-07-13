@@ -108,9 +108,11 @@ namespace LexiEconWPF.UIWidgets
 		private static List<ExampleSentences> GetSentenceDeserialStr(dynamic dataGet, int i)
 		{
 			string sentenceInfo = dataGet.data[i].sentence;
+			sentenceInfo = sentenceInfo.Replace("\"", "“");
 			sentenceInfo = sentenceInfo.Replace("'", "\"");
 			sentenceInfo = sentenceInfo.Replace(@"\", @"\\");
 			List<ExampleSentences> sentences = JsonConvert.DeserializeObject<List<ExampleSentences>>(sentenceInfo);
+
 			return sentences;
 		}
 

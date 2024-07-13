@@ -54,4 +54,18 @@ namespace LexiEconWPF
 		public string Id { get; set; }
 		public string Name { get; set; }
 	}
+	public class NewTaskClass
+	{
+		public int task_id { get; set; }
+		public int class_id { get; set; }
+		public string name { get; set; }
+		public List<TaskClassWords> words { get; set; }
+
+	}
+	public class TaskClassWords
+	{
+		public int cate_id { get; set; }
+		public int start { get; set; }
+		public int end { get; set; }
+	}
 }

@@ -56,13 +56,15 @@ namespace LexiEconWPF.AppFunctions
 			string data = await message.Content.ReadAsStringAsync();
 			dynamic dataGet = JObject.Parse(data);
 			int cateCounts = dataGet.data.Count;
+			
 			for (int i = 0; i < cateCounts; i++)
 			{
-				DataExchageStatic.CateWithId.Add(new CateWithId
+				CateWithId ids = new CateWithId
 				{
 					Id = dataGet.data[i].cate_id,
 					Name = dataGet.data[i].cated_name,
-				});
+				};
+				DataExchageStatic.CateWithId.Add(ids);
 			}
 
 		}

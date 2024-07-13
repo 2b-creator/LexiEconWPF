@@ -26,5 +26,8 @@ namespace LexiEconWPF.AppFunctions
 		public static string GetClassInfo = "/api/users/class/info";
 		public static string JoinClass = "/api/users/join";
 		public static string GetCate = "/api/client/get_cate";
+		public static string GetNewTaskId = "/api/users/task/new";
+		public static string AssginNewTask = "/api/users/task/assign";
+		public static string ReleaseNewTask = "/api/users/task/release";
 	}
 }

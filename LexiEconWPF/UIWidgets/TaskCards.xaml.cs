@@ -33,6 +33,11 @@ namespace LexiEconWPF.UIWidgets
 
 		private async void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
+			await SetState();
+		}
+
+		private async Task SetState()
+		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
 			var request = new HttpRequestMessage(HttpMethod.Get, $"{LexiEconSettings.LexiHost}{EndPointLexi.QueryTasks}");
@@ -60,6 +65,11 @@ namespace LexiEconWPF.UIWidgets
 		{
 			ReciteWordsExecuter executer = new ReciteWordsExecuter(Convert.ToInt32(((Button)sender).Tag));
 			executer.Execute();
+		}
+
+		private async void UserControl_GotFocus(object sender, RoutedEventArgs e)
+		{
+			await SetState();
 		}
 	}
 }

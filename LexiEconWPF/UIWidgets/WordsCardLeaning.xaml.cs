@@ -102,6 +102,7 @@ namespace LexiEconWPF.UIWidgets
 				{
 
 				}
+				catch (Exception ex) { await Console.Out.WriteLineAsync(ex.ToString()); throw ex; }
 			}
 			this.DataContext = this;
 		}
@@ -109,9 +110,11 @@ namespace LexiEconWPF.UIWidgets
 		private static List<ExampleSentences> GetSentenceDeserialStr(dynamic dataGet, int i)
 		{
 			string sentenceInfo = dataGet.data[i].sentence;
+			sentenceInfo = sentenceInfo.Replace("\"", "“");
 			sentenceInfo = sentenceInfo.Replace("'", "\"");
 			sentenceInfo = sentenceInfo.Replace(@"\", @"\\");
 			List<ExampleSentences> sentences = JsonConvert.DeserializeObject<List<ExampleSentences>>(sentenceInfo);
+
 			return sentences;
 		}
 
@@ -140,7 +143,7 @@ namespace LexiEconWPF.UIWidgets
 
 		private async void UserControl_GotFocus(object sender, RoutedEventArgs e)
 		{
-			await SetState();
+			//await SetState();
 		}
-    }
+	}
 }
