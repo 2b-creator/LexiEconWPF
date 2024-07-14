@@ -8,14 +8,14 @@
       xmlns:UIWidgets="clr-namespace:LexiEconWPF.UIWidgets" x:Class="LexiEconWPF.UserPages.MainPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Title="MainPage" x:Name="AllMainPage" Loaded="AllMainPage_Loaded">
 
     <Grid>
         <StackPanel Margin="20">
             <Grid Margin="10">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="你" FontWeight="Bold" FontSize="24"/>
-                    <TextBlock Text="好！" FontWeight="Bold" FontSize="24"/>
+                    <TextBlock Text="你好！" FontWeight="Bold" FontSize="24"/>
+                    <TextBlock x:Name="UsergetName" Text="" FontWeight="Bold" FontSize="24"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="10">
@@ -32,7 +32,7 @@
                 </Border>
             </Grid>
             <Grid Margin="10">
-                <TextBlock Text="学累了就休息会吧"/>
+                <TextBlock Text="如果学累了就休息会吧~"/>
             </Grid>
         </StackPanel>
     </Grid>

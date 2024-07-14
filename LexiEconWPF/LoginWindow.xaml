@@ -32,9 +32,10 @@
                             <PasswordBox x:Name="PasswordInput" ui:ControlHelper.PlaceholderText="请输入你的密码" Width="200" />
                         </Grid>
                     </StackPanel>
-                    <!--<Grid Margin="10" HorizontalAlignment="Center">
-            <Button Content="登录"/>
-        </Grid>-->
+                    <StackPanel Orientation="Horizontal">
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Info}"/>
+                        <TextBlock Text="如果你是第一次登录，请不要忘记更改初始密码"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
             <Grid Margin="10">

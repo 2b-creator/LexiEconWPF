@@ -35,7 +35,7 @@ namespace LexiEconWPF.AppFunctions
 						string content = reader.ReadToEnd();
 						dynamic serialContent = JObject.Parse(content);
 						UserStatus.AccessToken = serialContent.access_token;
-						LexiEconSettings.LexiHost = serialContent.lexi_host;
+						LexiEconSettings.LexiHost = serialContent.lexi_host == null ? "http://127.0.0.1:5000" : serialContent.lexi_host;
 					}
 				}
 				catch (Exception e)
@@ -64,7 +64,7 @@ namespace LexiEconWPF.AppFunctions
 			string data = await message.Content.ReadAsStringAsync();
 			dynamic dataGet = JObject.Parse(data);
 			int cateCounts = dataGet.data.Count;
-			
+
 			for (int i = 0; i < cateCounts; i++)
 			{
 				CateWithId ids = new CateWithId
@@ -90,24 +90,36 @@ namespace LexiEconWPF.AppFunctions
 		}
 		public async void CheckAppUpdate()
 		{
-			Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-			HttpClient client = new HttpClient();
-			HttpResponseMessage response = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.GetLatestClient}");
-			string info = await response.Content.ReadAsStringAsync();
-			dynamic getInfo = JObject.Parse(info);
-			string latestVersion = getInfo.data;
-			if (version.ToString() !=  latestVersion)
+			try
 			{
-				ContentDialog dialog = new ContentDialog();
-				
-				dialog.PrimaryButtonText = "暂不更新";
-				dialog.DefaultButton = ContentDialogButton.Primary;
-				dialog.Title = "检测到新版本";
-				NoticeUpdateApp noticeUpdateApp = new NoticeUpdateApp();
-				noticeUpdateApp.VersionCode.Text = version.ToString();
-				noticeUpdateApp.LatestVersionCode.Text = latestVersion;
-				dialog.Content = noticeUpdateApp;
-				var res = dialog.ShowAsync();
+				Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+				HttpClient client = new HttpClient();
+				HttpResponseMessage response = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.GetLatestClient}");
+				string info = await response.Content.ReadAsStringAsync();
+				dynamic getInfo = JObject.Parse(info);
+				string latestVersion = getInfo.data;
+				if (version.ToString() != latestVersion)
+				{
+					ContentDialog dialog = new ContentDialog();
+
+					dialog.PrimaryButtonText = "暂不更新";
+					dialog.DefaultButton = ContentDialogButton.Primary;
+					dialog.Title = "检测到新版本";
+					NoticeUpdateApp noticeUpdateApp = new NoticeUpdateApp();
+					noticeUpdateApp.VersionCode.Text = version.ToString();
+					noticeUpdateApp.LatestVersionCode.Text = latestVersion;
+					dialog.Content = noticeUpdateApp;
+					var res = dialog.ShowAsync();
+				}
+			}
+			catch (HttpRequestException ex)
+			{
+				LogHelper.Warn(ex.ToString());
+				//throw ex;
+			}
+			catch (InvalidOperationException ex)
+			{
+				LogHelper.Warn(ex.ToString());
 			}
 		}
 	}

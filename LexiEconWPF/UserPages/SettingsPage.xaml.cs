@@ -69,5 +69,10 @@ namespace LexiEconWPF.UserPages
 			dialog.Content = aboutWPF;
 			var res = await dialog.ShowAsync();
 		}
+
+		private void ChangePwdBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

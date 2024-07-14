@@ -36,6 +36,18 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Margin="5">
+                    <TextBlock VerticalAlignment="Center" Text="更改密码:"/>
+                </Grid>
+                <Grid Margin="5" Grid.Column="1">
+                    <Button x:Name="ChangePwdBtn" Click="ChangePwdBtn_Click" Content="更改..."/>
+                </Grid>
+            </Grid>
+            <Grid Margin="5,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="5">
                     <TextBlock VerticalAlignment="Center" Text="关于LexiEcon:"/>
                 </Grid>
                 <Grid Margin="5" Grid.Column="1">

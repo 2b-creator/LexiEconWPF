@@ -9,6 +9,7 @@ namespace LexiEconWPF.AppFunctions
 	public class UserStatus
 	{
 		public static string? AccessToken { get; set; }
+		public static string? Realname { get; set; }
 	}
 	public class UserAttribute
 	{
