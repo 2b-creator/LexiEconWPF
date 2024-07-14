@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="LexiEconWPF.UIWidgets.ChangePwdControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LexiEconWPF.UIWidgets"
+             xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+             mc:Ignorable="d" >
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5" VerticalAlignment="Center" Text="请输入旧密码："/>
+            <PasswordBox x:Name="EnterOldPassword" Margin="5" Grid.Column="1"/>
+        </Grid>
+        <StackPanel x:Name="OldPasswdError" Orientation="Horizontal" Visibility="Collapsed">
+            <ui:FontIcon  Icon="{x:Static ui:SegoeFluentIcons.Error}" Foreground="Red"/>
+            <TextBlock Margin="5" Text="旧密码有误" Foreground="Red"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5" VerticalAlignment="Center" Text="请输入新密码："/>
+            <PasswordBox x:Name="EnterNewPassword" Margin="5" Grid.Column="1"/>
+        </Grid>
+        <StackPanel x:Name="ShortPasswdError" Orientation="Horizontal" Visibility="Collapsed">
+            <ui:FontIcon  Icon="{x:Static ui:SegoeFluentIcons.Error}" Foreground="Red"/>
+            <TextBlock Margin="5" Text="密码少于 8 位" Foreground="Red"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="115"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5" VerticalAlignment="Center" Text="再次输入新密码："/>
+            <PasswordBox x:Name="EnterNewPasswordConfirm" Margin="5" Grid.Column="1"/>
+        </Grid>
+        <StackPanel x:Name="NewPasswdError" Orientation="Horizontal" Visibility="Collapsed">
+            <ui:FontIcon  Icon="{x:Static ui:SegoeFluentIcons.Error}" Foreground="Red"/>
+            <TextBlock Margin="5" Text="两次密码不匹配" Foreground="Red"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -31,4 +31,9 @@ namespace LexiEconWPF.AppFunctions
 	{
 		public string invite_code { get; set; }
 	}
+	public class ChangePasswordData
+	{
+		public string old_password { get; set; }
+		public string new_password { get; set;}
+	}
 }
