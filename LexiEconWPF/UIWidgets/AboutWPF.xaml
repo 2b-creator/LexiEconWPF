@@ -73,7 +73,7 @@
                     </Grid>
                 </StackPanel>
                 <Grid Margin="5" Grid.Column="1">
-                    <ui:HyperlinkButton Content="Buy Me a Coffee ~"/>
+                    <ui:HyperlinkButton NavigateUri="https://github.com/2b-creator/LexiEconWPF" Content="Buy Me a Coffee ~"/>
                 </Grid>
             </Grid>
         </StackPanel>

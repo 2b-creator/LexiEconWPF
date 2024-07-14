@@ -104,6 +104,8 @@ namespace LexiEconWPF.AppFunctions
 				dialog.DefaultButton = ContentDialogButton.Primary;
 				dialog.Title = "检测到新版本";
 				NoticeUpdateApp noticeUpdateApp = new NoticeUpdateApp();
+				noticeUpdateApp.VersionCode.Text = version.ToString();
+				noticeUpdateApp.LatestVersionCode.Text = latestVersion;
 				dialog.Content = noticeUpdateApp;
 				var res = dialog.ShowAsync();
 			}

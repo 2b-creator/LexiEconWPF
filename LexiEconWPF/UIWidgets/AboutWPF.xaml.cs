@@ -56,7 +56,8 @@ namespace LexiEconWPF.UIWidgets
 
 		private void UpdateImtly_Click(object sender, RoutedEventArgs e)
 		{
-			System.Diagnostics.Process.Start($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}");
+			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}") { UseShellExecute = true});
 		}
+
 	}
 }

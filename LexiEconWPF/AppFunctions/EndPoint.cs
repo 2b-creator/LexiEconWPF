@@ -31,5 +31,6 @@ namespace LexiEconWPF.AppFunctions
 		public static string ReleaseNewTask = "/api/users/task/release";
 		public static string GetLatestClient = "/api/client/latest";
 		public static string DownloadLatest = "/download/latest.zip";
+		public static string BuyMeACoffee = "/download/donate.png";
 	}
 }

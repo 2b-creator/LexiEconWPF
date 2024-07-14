@@ -28,7 +28,7 @@ namespace LexiEconWPF.UIWidgets
 
 		private void UpdateNow_Click(object sender, RoutedEventArgs e)
 		{
-			System.Diagnostics.Process.Start($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}");
+			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}") { UseShellExecute = true }); System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}") { UseShellExecute = true });
 		}
     }
 }

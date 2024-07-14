@@ -35,7 +35,7 @@
                         <TextBlock VerticalAlignment="Center" Text="最新版本号:"/>
                     </Grid>
                     <Grid Margin="5">
-                        <TextBlock VerticalAlignment="Center" Text="1.0.0"/>
+                        <TextBlock x:Name="LatestVersionCode" VerticalAlignment="Center" Text="1.0.0"/>
                     </Grid>
                 </StackPanel>
                 <Grid Margin="5" Grid.Column="1">
