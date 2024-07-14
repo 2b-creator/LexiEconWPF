@@ -30,17 +30,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="NewTaskCate" Text="单词分类:" Margin="5" VerticalAlignment="Center"/>
-
-                <ItemsControl x:Name="NewCateComboBox" Grid.Column="1" ItemsSource="{Binding CateWithIds}">
-                    <ItemsControl.ItemTemplate>
+                <ComboBox x:Name="NewCateComboBox" Grid.Column="1" Margin="5" ItemsSource="{Binding CateWithIds}">
+                    <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBox Margin="5">
-                                <ComboBoxItem Content="{Binding Name}" Tag="{Binding Id}"></ComboBoxItem>
-                            </ComboBox>
+                            <TextBlock Text="{Binding Name}" Tag="{Binding Id}"></TextBlock>
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>

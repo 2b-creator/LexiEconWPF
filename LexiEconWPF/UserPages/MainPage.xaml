@@ -19,7 +19,20 @@
                 </StackPanel>
             </Grid>
             <Grid Margin="10">
-                <UIWidgets:WordsCard/>
+                <TextBlock Text="感谢你下载使用 LexiEconWPF"/>
+            </Grid>
+            <Grid Margin="10">
+                <Border 
+                    BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
+                    CornerRadius="8" BorderThickness="1" Padding="12, 10" TextElement.FontSize="14" Height="450">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/UserPages/star.jpg" Stretch="UniformToFill"/>
+                    </Border.Background>
+
+                </Border>
+            </Grid>
+            <Grid Margin="10">
+                <TextBlock Text="学累了就休息会吧"/>
             </Grid>
         </StackPanel>
     </Grid>

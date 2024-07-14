@@ -72,8 +72,9 @@ namespace LexiEconWPF.UserPages
 			{
 				int classId = Convert.ToInt32(assignNewTask.TaskClassId.Text);
 				string taskName = assignNewTask.NewTaskName.Text;
-				dynamic selectedIndex = assignNewTask.NewCateComboBox;
-				string cate = selectedIndex.Items.CurrentItem.Id;
+				int selectedIndex = assignNewTask.NewCateComboBox.SelectedIndex;
+				dynamic temp = assignNewTask.NewCateComboBox.Items[selectedIndex];
+				string cate = temp.Id;
 				int cateId = Convert.ToInt32(cate);
 				int end = Convert.ToInt32(assignNewTask.WordsEndId.Text);
 				int start = Convert.ToInt32(assignNewTask.WordsStartId.Text);
