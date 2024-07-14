@@ -14,7 +14,7 @@
                 <TextBlock VerticalAlignment="Center" Text="学习" Grid.Column="0" FontWeight="Bold" FontSize="24"/>
             </Grid>
             <Grid Margin="10">
-                <UIWidgets:WordsCardLeaning />
+                <UIWidgets:WordsCardLeaning x:Name="wLearningCard" />
             </Grid>
         </StackPanel>
     </Grid>

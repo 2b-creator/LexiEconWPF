@@ -30,7 +30,18 @@
                     <ui:AutoSuggestBox x:Name="Homeserver"/>
                 </Grid>
             </Grid>
-
+            <Grid Margin="5,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="5">
+                    <TextBlock VerticalAlignment="Center" Text="关于LexiEcon:"/>
+                </Grid>
+                <Grid Margin="5" Grid.Column="1">
+                    <Button x:Name="AboutPageBtn" Click="AboutPageBtn_Click" Content="关于"/>
+                </Grid>
+            </Grid>
         </StackPanel>
         <Button x:Name="SaveSettingsBtn" Click="SaveSettingsBtn_Click" Margin="20" HorizontalAlignment="Center" Width="60" Content="保存" Grid.Row="1"/>
     </Grid>

@@ -13,11 +13,14 @@ namespace LexiEconWPF.AppFunctions
 		{
 			_taskId = taskId;
 		}
-		public void Execute()
+		public async void Execute()
 		{
 			DataExchageStatic.TaskId = _taskId;
 			ReciteWordsWindow reciteWordsWindow = new ReciteWordsWindow();
 			reciteWordsWindow.ShowDialog();
+			DataExchageStatic.window.MainWindowSetState();
+			await MainWindow.TasksPage.tCardsWidget.TasksCardSetState();
+			await MainWindow.StudyPage.wLearningCard.LearningCardSetState();
 		}
 	}
 }

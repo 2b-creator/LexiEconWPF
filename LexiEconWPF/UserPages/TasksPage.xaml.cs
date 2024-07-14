@@ -46,6 +46,7 @@ namespace LexiEconWPF.UserPages
 			try
 			{
 				await TaskHanders();
+				DataExchageStatic.window.MainWindowSetState();
 				await tCardsWidget.TasksCardSetState();
 			}
 			catch (Exception ex)

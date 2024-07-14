@@ -41,6 +41,12 @@ namespace LexiEconWPF
 
 		public void MainWindowSetState()
 		{
+			MainPage = new UserPages.MainPage();
+			TasksPage = new UserPages.TasksPage();
+			StudyPage = new UserPages.StudyPage();
+			UnLoginPage = new UserPages.UnLoginPage();
+			ClassPage = new UserPages.ClassPage();
+			SettingsPage = new UserPages.SettingsPage();
 			isLogin = !String.IsNullOrEmpty(UserStatus.AccessToken);
 			var item = NavigationBarSel.SelectedItem;
 			System.Windows.Controls.Page? page = null;

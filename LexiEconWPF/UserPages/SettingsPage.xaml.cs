@@ -1,4 +1,6 @@
-﻿using LexiEconWPF.AppFunctions;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using LexiEconWPF.AppFunctions;
+using LexiEconWPF.UIWidgets;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -21,7 +23,7 @@ namespace LexiEconWPF.UserPages
 	/// <summary>
 	/// SettingsPage.xaml 的交互逻辑
 	/// </summary>
-	public partial class SettingsPage : Page
+	public partial class SettingsPage : System.Windows.Controls.Page
 	{
 		public SettingsPage()
 		{
@@ -30,7 +32,7 @@ namespace LexiEconWPF.UserPages
 
 		private void SettingsPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			
+
 			Homeserver.Text = LexiEconSettings.LexiHost;
 		}
 
@@ -55,6 +57,17 @@ namespace LexiEconWPF.UserPages
 			{
 				sw.Write(writeContent);
 			}
+		}
+
+		private async void AboutPageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			ContentDialog dialog = new ContentDialog();
+			dialog.Title = "关于";
+			dialog.PrimaryButtonText = "确定";
+			dialog.DefaultButton = ContentDialogButton.Primary;
+			AboutWPF aboutWPF = new AboutWPF();
+			dialog.Content = aboutWPF;
+			var res = await dialog.ShowAsync();
 		}
 	}
 }

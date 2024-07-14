@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -186,6 +187,10 @@ namespace LexiEconWPF.UIWidgets
 						string postStr = $"{{\"task_id\": {taskId}}}";
 						var postStrContent = new StringContent(postStr, Encoding.UTF8, "application/json");
 						HttpResponseMessage message = await httpClient.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.FinishTask}", content: postStrContent);
+						DataExchageStatic.window.MainWindowSetState();
+						await MainWindow.TasksPage.tCardsWidget.TasksCardSetState();
+						await MainWindow.StudyPage.wLearningCard.LearningCardSetState();
+						
 					}
 					nameTextBlock.Visibility = Visibility.Visible;
 				}

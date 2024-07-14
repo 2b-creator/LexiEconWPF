@@ -51,6 +51,7 @@ namespace LexiEconWPF.UserPages
 				client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
 				var content = new StringContent(postJoinStr, Encoding.UTF8, "application/json");
 				HttpResponseMessage resp = await client.PostAsync(requestUri: $"{LexiEconSettings.LexiHost}{EndPointLexi.JoinClass}", content: content);
+				DataExchageStatic.window.MainWindowSetState();
 				await ClassCardsWidgetInter.ClassLoader();
 			}
         }

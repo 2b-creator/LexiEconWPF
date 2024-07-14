@@ -40,7 +40,7 @@ namespace LexiEconWPF.UIWidgets
 		{
 			try
 			{
-				await SetState();
+				await LearningCardSetState();
 			}
 			catch (Exception ex)
 			{
@@ -51,7 +51,7 @@ namespace LexiEconWPF.UIWidgets
 			}
 		}
 
-		private async Task SetState()
+		public async Task LearningCardSetState()
 		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
