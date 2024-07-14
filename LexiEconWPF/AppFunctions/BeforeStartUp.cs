@@ -32,6 +32,7 @@ namespace LexiEconWPF.AppFunctions
 						string content = reader.ReadToEnd();
 						dynamic serialContent = JObject.Parse(content);
 						UserStatus.AccessToken = serialContent.access_token;
+						LexiEconSettings.LexiHost = serialContent.lexi_host;
 					}
 				}
 				catch (Exception e)

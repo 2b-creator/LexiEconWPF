@@ -33,10 +33,10 @@ namespace LexiEconWPF.UIWidgets
 
 		private async void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
-			await SetState();
+			await TasksCardSetState();
 		}
 
-		private async Task SetState()
+		public async Task TasksCardSetState()
 		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
@@ -69,7 +69,7 @@ namespace LexiEconWPF.UIWidgets
 
 		private async void UserControl_GotFocus(object sender, RoutedEventArgs e)
 		{
-			await SetState();
+			await TasksCardSetState();
 		}
 	}
 }

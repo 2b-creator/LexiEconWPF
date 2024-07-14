@@ -46,12 +46,13 @@ namespace LexiEconWPF.UserPages
 			try
 			{
 				await TaskHanders();
+				await tCardsWidget.TasksCardSetState();
 			}
 			catch (Exception ex)
 			{
 				string exName = ex.ToString();
 				MessageBoxEx.Show(exName, "错误!", MessageBoxButton.OK, MessageBoxImage.Error);
-				LogHelper.Error("error", ex);
+				LogHelper.Error(exName, ex);
 				//throw ex;
 			}
 		}

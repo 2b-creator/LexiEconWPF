@@ -13,7 +13,10 @@
     <Grid>
         <StackPanel Margin="20">
             <Grid Margin="10">
-                <TextBlock Text="你好" FontWeight="Bold" FontSize="24"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="你" FontWeight="Bold" FontSize="24"/>
+                    <TextBlock Text="好！" FontWeight="Bold" FontSize="24"/>
+                </StackPanel>
             </Grid>
             <Grid Margin="10">
                 <UIWidgets:WordsCard/>

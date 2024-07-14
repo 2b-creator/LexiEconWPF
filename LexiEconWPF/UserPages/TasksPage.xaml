@@ -35,7 +35,7 @@
                 </Grid>
                 <Grid>
                     <ScrollViewer Height="450">
-                        <UIWidgets:TaskCards />
+                        <UIWidgets:TaskCards x:Name="tCardsWidget" />
                     </ScrollViewer>
                 </Grid>
             </StackPanel>

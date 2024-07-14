@@ -48,9 +48,12 @@ namespace LexiEconWPF
 			string data = await resp.Content.ReadAsStringAsync();
 			dynamic serialData = JObject.Parse(data);
 			string token = serialData.access_token;
+			LexiEconSettings.SaveJsonSettings.access_token = token;
+			LexiEconSettings.SaveJsonSettings.lexi_host = LexiEconSettings.LexiHost;
 			UserStatus.AccessToken = token;
-			string writeContent = $"{{\"access_token\": \"{token}\"}}";
+			string writeContent = JsonConvert.SerializeObject(LexiEconSettings.SaveJsonSettings);
 			MainWindow.isLogin = true;
+			DataExchageStatic.window.MainWindowSetState();
 			using (StreamWriter sw = new StreamWriter(fullFilePath))
 			{
 				sw.Write(writeContent);

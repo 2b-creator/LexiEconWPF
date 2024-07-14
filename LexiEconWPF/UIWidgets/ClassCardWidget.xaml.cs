@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
 
 namespace LexiEconWPF.UIWidgets
 {
@@ -31,6 +32,21 @@ namespace LexiEconWPF.UIWidgets
 		}
 
 		private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				await ClassLoader();
+			}
+			catch (Exception ex)
+			{
+				string exName = ex.ToString();
+				MessageBoxEx.Show(exName, "致命的错误!", MessageBoxButton.OK, MessageBoxImage.Error);
+				LogHelper.Fatal(exName, ex);
+				throw ex;
+			}
+		}
+
+		public async Task ClassLoader()
 		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Add("access-token", UserStatus.AccessToken);
