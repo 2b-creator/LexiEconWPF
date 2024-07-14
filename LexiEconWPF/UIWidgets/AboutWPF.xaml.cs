@@ -43,11 +43,20 @@ namespace LexiEconWPF.UIWidgets
 			dynamic getInfo = JObject.Parse(info);
 			string latestVersion = getInfo.data;
 			LatestVersionCode.Text = latestVersion;
+            if (LatestVersionCode.Text != VersionCode.Text)
+            {
+				UpdateImtly.IsEnabled = true;
+			}
         }
 
 		private void GiveAuthorStar_Click(object sender, RoutedEventArgs e)
 		{
 
+		}
+
+		private void UpdateImtly_Click(object sender, RoutedEventArgs e)
+		{
+			System.Diagnostics.Process.Start($"{LexiEconSettings.LexiHost}{EndPointLexi.DownloadLatest}");
 		}
 	}
 }

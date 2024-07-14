@@ -38,6 +38,9 @@
                         <TextBlock x:Name="LatestVersionCode" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
+                <Grid Margin="5" Grid.Column="1">
+                    <ui:HyperlinkButton x:Name="UpdateImtly" Click="UpdateImtly_Click" NavigateUri="https://github.com/2b-creator/LexiEconWPF" IsEnabled="False" Content="立即更新"/>
+                </Grid>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>

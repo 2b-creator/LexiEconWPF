@@ -12,6 +12,9 @@ using System.Net.Http;
 using System.Windows;
 using System.Xml.Linq;
 using MessageBoxEx = iNKORE.UI.WPF.Modern.Controls.MessageBox;
+using Windows.Media.Protection.PlayReady;
+using iNKORE.UI.WPF.Modern.Controls;
+using LexiEconWPF.UIWidgets;
 
 namespace LexiEconWPF.AppFunctions
 {
@@ -84,6 +87,26 @@ namespace LexiEconWPF.AppFunctions
 				File.Create(fullFilePath).Close();
 			}
 			LogHelper.SetConfig(fullFilePath);
+		}
+		public async void CheckAppUpdate()
+		{
+			Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+			HttpClient client = new HttpClient();
+			HttpResponseMessage response = await client.GetAsync($"{LexiEconSettings.LexiHost}{EndPointLexi.GetLatestClient}");
+			string info = await response.Content.ReadAsStringAsync();
+			dynamic getInfo = JObject.Parse(info);
+			string latestVersion = getInfo.data;
+			if (version.ToString() !=  latestVersion)
+			{
+				ContentDialog dialog = new ContentDialog();
+				
+				dialog.PrimaryButtonText = "暂不更新";
+				dialog.DefaultButton = ContentDialogButton.Primary;
+				dialog.Title = "检测到新版本";
+				NoticeUpdateApp noticeUpdateApp = new NoticeUpdateApp();
+				dialog.Content = noticeUpdateApp;
+				var res = dialog.ShowAsync();
+			}
 		}
 	}
 }
