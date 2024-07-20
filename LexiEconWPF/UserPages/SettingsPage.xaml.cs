@@ -41,6 +41,11 @@ namespace LexiEconWPF.UserPages
 
 		private void SaveSettingsBtn_Click(object sender, RoutedEventArgs e)
 		{
+			SaveSettings();
+		}
+
+		private void SaveSettings()
+		{
 			string currentPath = System.IO.Directory.GetCurrentDirectory();
 			string filename = "config.json";
 			string[] paths = new string[] { currentPath, filename };
@@ -147,6 +152,7 @@ namespace LexiEconWPF.UserPages
 				BeforeStartUp startUp = new BeforeStartUp();
 				startUp.ReadJsonAccess();
 				DataExchageStatic.window.MainWindowSetState();
+				SaveSettings();
 			}
 		}
 	}
