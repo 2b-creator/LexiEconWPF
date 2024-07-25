@@ -105,7 +105,7 @@ namespace LexiEconWPF.UIWidgets
 					string exName = ex.ToString();
 					MessageBoxEx.Show(exName, "致命的错误!", MessageBoxButton.OK, MessageBoxImage.Error);
 					LogHelper.Fatal("error", ex);
-					throw ex;
+					throw;
 				}
 			}
 			this.DataContext = this;
