@@ -42,7 +42,7 @@ namespace LexiEconWPF.AppFunctions
 				{
 					MessageBoxEx.Show(e.ToString(), "错误!", MessageBoxButton.OK, MessageBoxImage.Error);
 					LogHelper.Fatal(e.ToString(), e);
-					throw e;
+					throw;
 				}
 
 			}
