@@ -41,7 +41,7 @@ namespace LexiEconWPF.UserPages
 			{
 				MessageBoxEx.Show(e.ToString(), "错误!", MessageBoxButton.OK, MessageBoxImage.Error);
 				LogHelper.Fatal(e.ToString()!, ex);
-				throw;
+				//throw;
 			}
 			if (message.StatusCode == System.Net.HttpStatusCode.OK)
 			{
