@@ -43,11 +43,14 @@ namespace LexiEconWPF.UserPages
 				LogHelper.Fatal(e.ToString()!, ex);
 				//throw;
 			}
-			if (message.StatusCode == System.Net.HttpStatusCode.OK)
+			if (message!=null)
 			{
-				string info = await message.Content.ReadAsStringAsync();
-				dynamic getInfo = JObject.Parse(info);
-				UsergetName.Text = getInfo.realname;
+				if (message.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					string info = await message.Content.ReadAsStringAsync();
+					dynamic getInfo = JObject.Parse(info);
+					UsergetName.Text = getInfo.realname;
+				}
 			}
 		}
 	}
